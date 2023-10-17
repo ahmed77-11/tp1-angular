@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Produit } from '../model/produit.model';
-import { ProduitService } from '../services/produit.service';
+import { ProduitService } from '../services/ProduitService';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-produit',
@@ -11,7 +12,7 @@ export class AddProduitComponent {
   newProduit = new Produit();
 
   message: string;
-  constructor(private produitService: ProduitService) {
+  constructor(private produitService: ProduitService, private router: Router) {
     // this.newProduit = {};
     this.message = '';
   }
@@ -20,5 +21,6 @@ export class AddProduitComponent {
     this.produitService.ajouterProduit(this.newProduit);
     this.message =
       'Produit ' + this.newProduit.nomProduit + ' ajouter avec success';
+    this.router.navigate(['produits']);
   }
 }
