@@ -29,6 +29,9 @@ export class UpdateProduitComponent implements OnInit {
     console.log(this.currentProduit);
   }
   updateProduit() {
+    this.currentProduit.categorie = this.produitService.consulterCategorie(
+      this.updatedCatId
+    );
     this.produitService.updateProduit(this.currentProduit);
     console.log(this.currentProduit);
     this.router.navigate(['produits']);
