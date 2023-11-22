@@ -17,12 +17,17 @@
             <td>{{ produit.dateCreation | date : "dd/MM/yyyy" }}</td>
             <td>{{ produit.categorie?.nomCat }}</td>
             <td>
-              <a class="btn btn-danger" (click)="supprimerProduit(produit)">
+              <a
+                *ngIf="authService.isAdmin()"
+                class="btn btn-danger"
+                (click)="supprimerProduit(produit)"
+              >
                 Supprimer
               </a>
             </td>
             <td>
               <a
+                *ngIf="authService.isAdmin()"
                 class="btn btn-success"
                 [routerLink]="['/updateProduit', produit.idProduit]"
               >
